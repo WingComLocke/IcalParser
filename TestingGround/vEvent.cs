@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICalParser;
-namespace IcalParser
+namespace ICalParser
 {
 
     public class vEvent

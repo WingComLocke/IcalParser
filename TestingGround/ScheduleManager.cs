@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICalParser;
+
 namespace ICalParser
 {
     public class ScheduleManager
@@ -28,11 +29,11 @@ namespace ICalParser
     public ScheduleManager(string storagePath) {
 
             StreamReader reader(storagePath);
-            line = reader.ReadLine();
+            string line = reader.ReadLine();
 
             while (line != NULL)
             {
-                icalSchedule tempSchedule(line);
+                icalSchedule tempSchedule = new icalSchedule(line);
                 schedules.add(tempSchedule);
 
                 line = reader.ReadLine();
@@ -46,7 +47,7 @@ namespace ICalParser
 
     //Default (and only) destructor (AKA Finalizer)
     //Deletes all schedules and exports a storagePathFile (To be written, currently just deletes everything)
-    public ~ScheduleManager()
+     ~ ScheduleManager()
     {
     
     }

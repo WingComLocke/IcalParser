@@ -66,10 +66,15 @@ namespace ICalParser {
         {
             int calculatedWeekday;
             int century;
+            double notRoundedCalc;
 
             century = year / 100;
 
-            calculatedWeekday = (day + (2.6 * month - 0.2) - 2 * century + year + (year / 4) + (century / 4) % 7);
+            notRoundedCalc = (day + (2.6 * month - 0.2) - 2 * century + year + (year / 4) + (century / 4) % 7);
+
+            calculatedWeekday = Convert.ToInt32(notRoundedCalc);
+
+            return calculatedWeekday;
         }
 
     }

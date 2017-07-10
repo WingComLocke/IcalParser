@@ -27,7 +27,7 @@ namespace ICalParser
         }
 
         //Defult constructor. Empty Schedule
-        public icalSchedule(string icalPath) { }
+        public icalSchedule() { }
             
 
         //Members
@@ -35,14 +35,14 @@ namespace ICalParser
         string productID { get; set; }
         string calScale { get; set; }
         string version { get; set; }
-        v_timezone timezone { get; set; }
+        v_timeZone timezone { get; set; }
 
-           private list<vEvent> calEvents;
+        private list<vEvent> calEvents;
 
         //Function which adds an event.
         public void addEvent(t_time Instart_time, t_time Inend_time, t_time Intime_created, t_time Intime_last_modified, string InUID, string Indiscription, string Inlocation, string Instatus, string Insummary, string Intransparenty, int Insequence, vAlarm alarm)
         {
-            vEvent temp(Instart_time, Inend_time, Intime_created, Intime_last_modified,  InUID,  Indiscription, Inlocation,  Instatus,  Insummary,  Intransparenty,  Insequence, alarm);
+            vEvent temp = new vEvent(Instart_time, Inend_time, Intime_created, Intime_last_modified,  InUID,  Indiscription, Inlocation,  Instatus,  Insummary,  Intransparenty,  Insequence, alarm);
             calEvents.add(temp);
         }
 
@@ -50,7 +50,8 @@ namespace ICalParser
         //Removes all events of that name
         public void removeEvent(string eventName)
         {
-            for(int i = 0; i < calEvents.Count; i++)
+            int count = calEvents.Count();
+            for (int i = 0; i < count; i++)
             {
                 if (calEvents[i].name == eventName) {
                     calEvents.RemoveAt(i);
