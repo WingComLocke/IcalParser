@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICalParser;
+using System.IO;
 
 namespace ICalParser
 {
@@ -13,16 +14,14 @@ namespace ICalParser
         //Reads through the document given by the path and generates the members
         public icalSchedule(string icalPath)
         {
-            StreamReader reader(icalPath);
-            line = reader.ReadLine();
+            StreamReader reader = new StreamReader(icalPath);
+            string line = reader.ReadLine();
 
-
-            while (line != "End:VCALANDER" || line != NULL)
+            while (line != "END:VCALENDAR")
             {
-               
                 
 
-
+                line = reader.ReadLine();
             }
         }
 
@@ -36,14 +35,15 @@ namespace ICalParser
         string calScale { get; set; }
         string version { get; set; }
         v_timeZone timezone { get; set; }
+        List<string> exeptionsUsed;
 
-        private list<vEvent> calEvents;
+        private List<vEvent> calEvents;
 
         //Function which adds an event.
-        public void addEvent(t_time Instart_time, t_time Inend_time, t_time Intime_created, t_time Intime_last_modified, string InUID, string Indiscription, string Inlocation, string Instatus, string Insummary, string Intransparenty, int Insequence, vAlarm alarm)
+        public void addEvent(t_time Instart_time, t_time Inend_time, t_time Intime_created, t_time Intime_last_modified, string InUID, string Indiscription, string Inlocation, string Instatus, string Insummary, string Intransparenty, int Insequence, v_alarm alarm)
         {
             vEvent temp = new vEvent(Instart_time, Inend_time, Intime_created, Intime_last_modified,  InUID,  Indiscription, Inlocation,  Instatus,  Insummary,  Intransparenty,  Insequence, alarm);
-            calEvents.add(temp);
+            calEvents.Add(temp);
         }
 
         //Function which removes a event (by name)

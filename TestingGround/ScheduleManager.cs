@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ICalParser;
+using System.IO;
 
 namespace ICalParser
 {
@@ -11,7 +12,7 @@ namespace ICalParser
     {
 
         //The list of schedules this file contains
-        private list<icalSchedule> schedules;
+        private List<icalSchedule> schedules;
 
         //Stores the current number of schedules to be used internally
         private int numberOfSchedules;
@@ -24,17 +25,18 @@ namespace ICalParser
         // add more as needed
         private int sortingOrder;
 
-    //Default (and only) constructor
-    //Reads from the a file further already stored schedules.
-    public ScheduleManager(string storagePath) {
+        //Default (and only) constructor
+        //Reads from the a file further already stored schedules.
+        public ScheduleManager(string storagePath)
+        {
 
-            StreamReader reader(storagePath);
+            StreamReader reader = new StreamReader(storagePath);
             string line = reader.ReadLine();
 
-            while (line != NULL)
+            while (line != "ENDOFSCHEDULES")
             {
                 icalSchedule tempSchedule = new icalSchedule(line);
-                schedules.add(tempSchedule);
+                schedules.Add(tempSchedule);
 
                 line = reader.ReadLine();
             }
@@ -43,30 +45,22 @@ namespace ICalParser
         }
 
 
-    }
-
-    //Default (and only) destructor (AKA Finalizer)
-    //Deletes all schedules and exports a storagePathFile (To be written, currently just deletes everything)
-     ~ ScheduleManager()
-    {
-    
-    }
 
 
-    //Method for adding a new schedule (Empty)
-    public void addschedule()
-    {
 
-    }
 
-    //Method for adding a new imported schedule
-    public void addschedule(string icalPath)
-    {
+        //Method for adding a new schedule (Empty)
+        //public void addschedule()
+        //{
+        //
+        //}
 
-    }
-
+        //Method for adding a new imported schedule
+        // public void addschedule(string icalPath)
+        // {
+        //
+        // }
+    } 
 }
 
 
-
-}

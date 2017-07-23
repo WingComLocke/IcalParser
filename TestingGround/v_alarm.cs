@@ -7,8 +7,7 @@ using ICalParser;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-namespace ICalParser
-{
+
     public class v_alarm
     {
         public v_alarm(v_alarm alarm)
@@ -30,4 +29,3 @@ namespace ICalParser
         public string description { get; set; }
 
     }
-}

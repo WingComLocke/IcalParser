@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ICalParser;
 
-namespace ICalParser {
     public class t_time
     {
         // Field
@@ -61,8 +60,8 @@ namespace ICalParser {
 
         }
 
-        // Internal use functions
-        public int calculate_Weekday(int year, int month. int day)
+    // Internal use functions
+    public int calculate_Weekday(int year, int month, int day)
         {
             int calculatedWeekday;
             int century;
@@ -78,5 +77,3 @@ namespace ICalParser {
         }
 
     }
-
-}

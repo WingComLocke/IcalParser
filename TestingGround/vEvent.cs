@@ -20,6 +20,7 @@ namespace ICalParser
         string status { get; set; }
         string summary { get; set; }
         string transparenty { get; set; }
+        public string name { get; set; }
 
         int sequence { get; set; }
 
